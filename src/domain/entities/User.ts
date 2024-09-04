@@ -1,20 +1,20 @@
 export interface IUser {
-    id?: string;
-    nome: string;
+    id: string;
+    name: string;
     email: string;
-    senha: string;
+    password: string;
 }
 
-export class User implements IUser{
-    public id?: string;
-    public nome: string;
+export class User implements User {
+    public id: string;
+    public name: string;
     public email: string;
-    public senha: string;
+    public password: string;
 
-    constructor({id, nome, email, senha}: IUser){
+    constructor({ id, name, email, password }: IUser) {
         this.id = id;
-        this.nome = nome;
+        this.name = name;
         this.email = email;
-        this.senha = senha;
+        this.password = password;
     }
 }
