@@ -1,9 +1,9 @@
 // src/Interface-Adaptors/gateways/UserRepositoryImpl.ts
-import { User } from "../../Domain/entities/User";
-import { UserRepository } from "../../Domain/repositories/UserRepository";
-import prisma from "../../infrastructure/database/PrismaConfig";
+import { User } from "../../../Domain/entities/User";
+import { IUserRepository } from "./IUserRepository";
+import prisma from "../../../infrastructure/database/PrismaConfig";
 
-export class UserRepositoryImpl implements UserRepository {
+export class UserRepository implements IUserRepository {
 
     public async create(user: User): Promise<User> {
         return prisma.user.create({

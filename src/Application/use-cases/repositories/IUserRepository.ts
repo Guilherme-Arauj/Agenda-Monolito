@@ -1,6 +1,6 @@
-import {User} from "../entities/User";
+import {User} from "../../../Domain/entities/User";
 
-export interface UserRepository {
+export interface IUserRepository {
     create(user:User): Promise <User>;
     validate(email:string): Promise <User | null>;
 }

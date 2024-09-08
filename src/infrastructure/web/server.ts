@@ -1,8 +1,9 @@
 import app from "./app"
+import { PORT } from "./env/envConfig";
 
-const porta = 3000;
 
 
-app.listen(porta, () => {
-    console.log(`Servidor rodando em localhost:${porta}`);
+
+app.listen(PORT, () => {
+    console.log(`Servidor rodando em localhost:${PORT}`);
 });

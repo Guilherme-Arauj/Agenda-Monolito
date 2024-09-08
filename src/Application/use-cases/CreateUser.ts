@@ -1,19 +1,15 @@
 // Arquivo referente ao Use-Case de criação do usuário;
 //Importando A entidade usuário, o repositório do usuário e os DTO´s necessários para executar a funcionalidade do use-case; Importando Utils de UUID e Bcrypt
 import {User} from "../../Domain/entities/User";
-import { UserRepository } from "../../Domain/repositories/UserRepository";
+import { IUserRepository } from "./repositories/IUserRepository";
 import { hashPassword } from "../../infrastructure/utils/BcryptConfig";
 import { generateId } from "../../infrastructure/utils/UuidConfig";
 import { CreateUserDTO, UserResponseDTO } from "../dtos/UserDTO";
-import { ICreateUser } from "./ICreateUser";
 
-export class CreateUser implements ICreateUser{
-    private userRepository: UserRepository;
 
-    constructor(userRepository: UserRepository){
-        this.userRepository = userRepository;
-    }
-    
+export class CreateUser{
+    constructor(private userRepository: IUserRepository){}
+
     public async execute(dto: CreateUserDTO): Promise <UserResponseDTO>{
         const userValidation = await this.userRepository.validate(dto.email);
         
