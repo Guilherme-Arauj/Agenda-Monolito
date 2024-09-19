@@ -17,7 +17,7 @@ class UserController {
             if (!validatedData)
                 return; // Se os dados forem inválidos, a resposta já foi enviada.
             // Criação do DTO
-            const dto = new UserDTO_1.CreateUserDTO(validatedData.name, validatedData.email, validatedData.password);
+            const dto = new UserDTO_1.UserDTO(validatedData.name, validatedData.email, validatedData.password);
             // Instanciando e Armazenando o Use Case
             const userResponse = await this.createUserUseCase.execute(dto);
             // Response com mensagem de sucesso

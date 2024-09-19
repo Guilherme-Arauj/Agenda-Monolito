@@ -1,5 +1,11 @@
+// src/infrastructure/database/PrismaConfig.ts
 import { PrismaClient } from "@prisma/client";
+import { IPrismaConfig } from "./IPrismaConfig";
 
-const prisma = new PrismaClient(); 
+export class PrismaConfig implements IPrismaConfig {
+    public prisma: PrismaClient;
 
-export default prisma;
+    constructor() {
+        this.prisma = new PrismaClient();
+    }
+}

@@ -2,23 +2,27 @@
 //Importando A entidade usuário, o repositório do usuário e os DTO´s necessários para executar a funcionalidade do use-case; Importando Utils de UUID e Bcrypt
 import {User} from "../../Domain/entities/User";
 import { IUserRepository } from "./repositories/IUserRepository";
-import { hashPassword } from "../../infrastructure/utils/BcryptConfig";
-import { generateId } from "../../infrastructure/utils/UuidConfig";
-import { CreateUserDTO, UserResponseDTO } from "../dtos/UserDTO";
+import { UserDTO, UserResponseDTO } from "../dtos/UserDTO";
+import { IBcryptConfig } from "../../infrastructure/utils/bcrypt/IBcryptConfig";
+import { IUuidConfig } from "../../infrastructure/utils/uuid/IUuidConfig";
 
 
 export class CreateUser{
-    constructor(private userRepository: IUserRepository){}
+    constructor(
+        private userRepository: IUserRepository, 
+        private bcryptConfig: IBcryptConfig, 
+        private uuidConfig: IUuidConfig
+    ){}
 
-    public async execute(dto: CreateUserDTO): Promise <UserResponseDTO>{
+    public async execute(dto: UserDTO): Promise <UserResponseDTO>{
         const userValidation = await this.userRepository.validate(dto.email);
         
         if(userValidation){
-            throw new Error("[Email de usuário já presente no Banco de dados]")
+            throw new Error("[Email de usuário já presente no Banco de dados]");
         }
 
-        const hashedPassword = await hashPassword(dto.password);
-        const id = await generateId();
+        const hashedPassword = await this.bcryptConfig.hash(dto.password, 10);
+        const id = await this.uuidConfig.generateId();
         const user = new User({
             id: id,
             name: dto.name,

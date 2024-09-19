@@ -1,12 +1,17 @@
 // src/Interface-Adaptors/gateways/UserRepositoryImpl.ts
 import { User } from "../../../Domain/entities/User";
 import { IUserRepository } from "./IUserRepository";
-import prisma from "../../../infrastructure/database/PrismaConfig";
+import { IPrismaConfig } from "../../../infrastructure/database/IPrismaConfig";
 
 export class UserRepository implements IUserRepository {
+    constructor(private prismaConfig: IPrismaConfig){}
+
+    private get prisma(){
+        return this.prismaConfig.prisma
+    }
 
     public async create(user: User): Promise<User> {
-        return prisma.user.create({
+        return this.prisma.user.create({
             data: {
                 id: user.id,
                 name: user.name,  
@@ -17,7 +22,7 @@ export class UserRepository implements IUserRepository {
     }
 
     public async validate(email: string): Promise<User | null> {
-        return prisma.user.findUnique({
+        return this.prisma.user.findUnique({
             where: {
                 email: email
             }

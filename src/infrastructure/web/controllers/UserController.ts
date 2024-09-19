@@ -1,7 +1,7 @@
 //Aqui é o arquivo de controller do usuário, aqui será o controle das requisições e suas respostas no servidor;
 //Aqui o DTO é criado e então o use-case é instanciado para então devolver ao servidor a response proveniente da lógica de negócio no use-case;
 import { CreateUser } from "../../../Application/use-cases/CreateUser";
-import { CreateUserDTO } from "../../../Application/dtos/UserDTO";
+import { UserDTO } from "../../../Application/dtos/UserDTO";
 import { Request, Response } from 'express';
 import { User } from "../../../Domain/entities/User";
 import { isNumberObject } from "util/types";
@@ -26,7 +26,7 @@ export class UserController{
             if (!validatedData) return;  // Se os dados forem inválidos, a resposta já foi enviada.
 
             // Criação do DTO
-            const dto = new CreateUserDTO(validatedData.name, validatedData.email, validatedData.password);
+            const dto = new UserDTO(validatedData.name, validatedData.email, validatedData.password);
 
             // Instanciando e Armazenando o Use Case
             const userResponse = await this.createUserUseCase.execute(dto);

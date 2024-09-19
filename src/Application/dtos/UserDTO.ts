@@ -1,5 +1,5 @@
 // DTO para criação de usuário - DTO utilizada apenas para a criação de um usuário;
-export class CreateUserDTO{
+export class UserDTO{
     public name: string;
     public email: string;
     public password: string;
