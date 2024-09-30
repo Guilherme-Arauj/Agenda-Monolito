@@ -1,4 +1,4 @@
-import { Contact, IContact } from "../../../Domain/entities/Contact";
+import { Contact } from "../../../domain/entities/Contact";
 
 export interface IContactRepository {
     create(contact: Contact): Promise<Contact>;

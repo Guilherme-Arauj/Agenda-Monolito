@@ -1,5 +1,5 @@
 // src/Interface-Adaptors/gateways/UserRepositoryImpl.ts
-import { User } from "../../../Domain/entities/User";
+import { User } from "../../../domain/entities/User";
 import { IUserRepository } from "./IUserRepository";
 import { IPrismaConfig } from "../../../infrastructure/database/IPrismaConfig";
 

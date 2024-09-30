@@ -10,6 +10,12 @@ export class UuidConfig implements IUuidConfig{
         return uuidComPrefixo;
     }
 
+    public async generateContactId(): Promise<string> {
+        const uuid = uuidv4();
+        const uuidLimitado = uuid.substring(0, 6);
+        const uuidComPrefixo = "C-" + uuidLimitado;
+        return uuidComPrefixo;
+    }
 }
 
 

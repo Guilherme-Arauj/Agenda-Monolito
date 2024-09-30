@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserController = void 0;
 const UserDTO_1 = require("../../../Application/dtos/UserDTO");
-const zodRegisterValidation_1 = require("../../utils/zod/zodRegisterValidation");
+const validateDTOUser_1 = require("../../utils/zod/validateDTOUser");
 class UserController {
     constructor(createUserUseCase) {
         this.createUserUseCase = createUserUseCase;
@@ -13,7 +13,7 @@ class UserController {
             // Criação do schema para validação
             const reqSchema = { email, name, password };
             // Validação assíncrona do DTO
-            const validatedData = await (0, zodRegisterValidation_1.validateDTO)(reqSchema, res);
+            const validatedData = await (0, validateDTOUser_1.validateDTOUser)(reqSchema, res);
             if (!validatedData)
                 return; // Se os dados forem inválidos, a resposta já foi enviada.
             // Criação do DTO

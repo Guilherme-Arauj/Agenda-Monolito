@@ -1,4 +1,3 @@
-// DTO para criação de usuário - DTO utilizada apenas para a criação de um usuário;
 export class UserDTO{
     public name: string;
     public email: string;
@@ -11,7 +10,6 @@ export class UserDTO{
     }
 }
 
-//DTO para response - Esse DTO é para ser utilizada sempre que os dados do usuário devem ser retornados;
 export class UserResponseDTO{
     public name: string;
     public email: string;

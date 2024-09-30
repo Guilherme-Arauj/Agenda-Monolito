@@ -1,33 +1,40 @@
 export interface IContact {
-    nome: string;
-    idade: number;
-    cpf: string;
-    telefone: string;
+    id: string;
+    name: string;
+    age?: number | null;
+    cpf?: string | null;
+    phone: string;
     email: string;
-    endereco: string;
-    redeSocial: string;
-    observacao: string;
-
+    address?: string | null;
+    socialMedia?: string | null;
+    note?: string | null;  
+    userId: string;
 }
 
-export class Contact implements IContact{
-    public nome: string;
-    public idade: number;
-    public cpf: string;
-    public telefone: string;
+export class Contact implements IContact {
+    public id: string;
+    public name: string;
+    public age: number | null;
+    public cpf: string | null;
+    public phone: string;
     public email: string;
-    public endereco: string;
-    public redeSocial: string;
-    public observacao: string;
-
-    constructor(nome: string, idade:number, cpf: string, telefone: string, email: string, endereco: string, redeSocial: string, observacao: string){
-        this.nome = nome;
-        this.idade = idade;
+    public address: string | null;
+    public socialMedia: string | null;
+    public note: string | null;  
+    public userId: string;
+    
+    constructor(
+        {id, name, age = null, cpf = null, phone, email, address = null, socialMedia = null, note = null, userId}: IContact
+    ) { 
+        this.id = id;
+        this.name = name;
+        this.age = age;
         this.cpf = cpf;
-        this.telefone = telefone;
+        this.phone = phone;
         this.email = email;
-        this.endereco = endereco;
-        this.redeSocial = redeSocial;
-        this.observacao = observacao;
+        this.address = address;
+        this.socialMedia = socialMedia;
+        this.note = note;  
+        this.userId = userId;    
     }
 }

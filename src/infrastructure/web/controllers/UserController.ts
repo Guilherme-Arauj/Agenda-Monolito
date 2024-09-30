@@ -3,9 +3,9 @@
 import { CreateUser } from "../../../Application/use-cases/CreateUser";
 import { UserDTO } from "../../../Application/dtos/UserDTO";
 import { Request, Response } from 'express';
-import { User } from "../../../Domain/entities/User";
+import { User } from "../../../domain/entities/User";
 import { isNumberObject } from "util/types";
-import { validateDTO } from "../../utils/zod/zodRegisterValidation";
+import { validateDTOUser } from "../../utils/zod/validateDTOUser";
 
 export class UserController{
     private createUserUseCase: CreateUser
@@ -22,7 +22,7 @@ export class UserController{
             const reqSchema = { email, name, password };
 
             // Validação assíncrona do DTO
-            const validatedData = await validateDTO(reqSchema, res);
+            const validatedData = await validateDTOUser(reqSchema, res);
             if (!validatedData) return;  // Se os dados forem inválidos, a resposta já foi enviada.
 
             // Criação do DTO

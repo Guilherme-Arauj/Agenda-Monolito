@@ -1,6 +1,6 @@
 // Arquivo referente ao Use-Case de criação do usuário;
 //Importando A entidade usuário, o repositório do usuário e os DTO´s necessários para executar a funcionalidade do use-case; Importando Utils de UUID e Bcrypt
-import {User} from "../../Domain/entities/User";
+import {User} from "../../domain/entities/User";
 import { IUserRepository } from "./repositories/IUserRepository";
 import { UserDTO, UserResponseDTO } from "../dtos/UserDTO";
 import { IBcryptConfig } from "../../infrastructure/utils/bcrypt/IBcryptConfig";

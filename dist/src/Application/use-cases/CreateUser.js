@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CreateUser = void 0;
 // Arquivo referente ao Use-Case de criação do usuário;
 //Importando A entidade usuário, o repositório do usuário e os DTO´s necessários para executar a funcionalidade do use-case; Importando Utils de UUID e Bcrypt
-const User_1 = require("../../Domain/entities/User");
+const User_1 = require("../../domain/entities/User");
 const UserDTO_1 = require("../dtos/UserDTO");
 class CreateUser {
     constructor(userRepository, bcryptConfig, uuidConfig) {

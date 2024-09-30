@@ -9,5 +9,11 @@ class UuidConfig {
         const uuidComPrefixo = "U-" + uuidLimitado;
         return uuidComPrefixo;
     }
+    async generateContactId() {
+        const uuid = (0, uuid_1.v4)();
+        const uuidLimitado = uuid.substring(0, 6);
+        const uuidComPrefixo = "C-" + uuidLimitado;
+        return uuidComPrefixo;
+    }
 }
 exports.UuidConfig = UuidConfig;

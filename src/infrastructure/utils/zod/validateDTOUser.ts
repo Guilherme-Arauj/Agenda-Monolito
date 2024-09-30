@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export async function validateDTO(reqSchema: Object, res: any) {
+export async function validateDTOUser(reqSchema: Object, res: any) {
   const userSchema = z.object({
     email: z.string().email("[Formato de email inválido]"),
     name: z.string().min(1, "[Nome é obrigatório]"),
@@ -8,7 +8,7 @@ export async function validateDTO(reqSchema: Object, res: any) {
   });
 
   try {
-    const user = userSchema.parse(reqSchema); 
+    const user = userSchema.parse(reqSchema);
     return user;
   } catch (error: any) {
     if (error instanceof z.ZodError) {
