@@ -1,58 +1,95 @@
 import { CreateContact } from "../../../Application/use-cases/CreateContact";
 import { Request, Response } from 'express';
 import { validateDTOContact } from "../../utils/zod/validateDTOContact";
-import { ContactDTO } from "../../../Application/dtos/ContactDTO";
+import { validateDTOContactView } from "../../utils/zod/validateDTOContactView";
+import { ContactDTO, ContactViewResponseDTO } from "../../../Application/dtos/ContactDTO";
+import { GetContacts } from "../../../Application/use-cases/GetContacts";
 
-export class ContactController{
-      private createContactUseCase: CreateContact
+export class ContactController {
+    private createContactUseCase: CreateContact;
+    private getContactsUseCase: GetContacts;
 
-    constructor(createContactUseCase: CreateContact){
+    constructor(createContactUseCase: CreateContact, getContactsUseCase: GetContacts) {
         this.createContactUseCase = createContactUseCase;
-    } 
+        this.getContactsUseCase = getContactsUseCase;
+    }
 
-    public async create(req: Request, res: Response): Promise<void>{
-       try {
-        console.log("oi");
-        
-        const {name, age, cpf, phone, email, address, socialMedia, note, userId} = req.body;
+    public async create(req: Request, res: Response): Promise<void> {
+        try {
 
-        const reqSchema = {
-            name,
-            age,
-            cpf,
-            phone,
-            email,
-            address,
-            socialMedia,
-            note,
-            userId
-        };
+            const { name, age, cpf, phone, email, address, socialMedia, note, userId } = req.body;
 
-        const validatedData = await validateDTOContact(reqSchema, res);
-        if (!validatedData) return;
-        
-        const dto = new ContactDTO(
-            validatedData.name, 
-            validatedData.age, 
-            validatedData.cpf, 
-            validatedData.phone, 
-            validatedData.email, 
-            validatedData.address, 
-            validatedData.socialMedia, 
-            validatedData.note, 
-            validatedData.userId
-        );
+            const reqSchema = {
+                name,
+                age,
+                cpf,
+                phone,
+                email,
+                address,
+                socialMedia,
+                note,
+                userId
+            };
 
-        const userResponse = await this.createContactUseCase.execute(dto);
+            const validatedData = await validateDTOContact(reqSchema, res);
+            if (!validatedData) return;
 
-        res.status(201).json({
-            message: "Cadastro de contato realizado com sucesso!",
-            user: userResponse
-        });
+            const dto = new ContactDTO(
+                validatedData.name,
+                validatedData.age,
+                validatedData.cpf,
+                validatedData.phone,
+                validatedData.email,
+                validatedData.address,
+                validatedData.socialMedia,
+                validatedData.note,
+                validatedData.userId
+            );
 
-       } catch (error) {
+            const userResponse = await this.createContactUseCase.execute(dto);
+
+            res.status(201).json({
+                message: "Cadastro de contato realizado com sucesso!",
+                user: userResponse
+            });
+
+        } catch (error) {
             console.error('Erro ao processar requisição:', error);
-            res.status(400).json({ message: "Erro ao criar contato"});
-       }
+            res.status(400).json({ message: "Erro ao criar contato" });
+        }
+    }
+
+    public async getContacts(req: Request, res: Response): Promise<void> {
+        try {
+
+            const { userId } = req.body;
+
+            if (!userId) {
+                res.status(400).send({ message: "userId is required" });
+                return;
+            }
+
+            const reqSchema = {
+                userId
+            }
+
+            const validatedData = await validateDTOContactView(reqSchema, res);
+            if (!validatedData) return;
+
+            const dto = new ContactViewResponseDTO(
+                validatedData.userId
+            );
+
+            const userResponse = await this.getContactsUseCase.execute(dto);
+
+            res.status(201).json({
+                message: "Lista de contatos:",
+                Contacts: userResponse
+            });
+
+        } catch (error) {
+            console.error('Erro ao processar requisição:', error);
+            res.status(400).json({ message: "Erro ao criar contato" });
+        }
     }
 }

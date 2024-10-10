@@ -26,9 +26,14 @@ export class ContactRepository implements IContactRepository{
         });
     }
     
-    contactTable(idUserCreator: string): Promise<Contact> {
-        throw new Error("Method not implemented.")
+    contactTable(idUserCreator: string): Promise<Contact[]> {
+        return this.prisma.contact.findMany({
+            where:{
+                userId: idUserCreator
+            },
+        });
     }
+    
     update(emailContact: string, topic: string, alteration: any): Promise<string> {
         throw new Error("Method not implemented.")
     }

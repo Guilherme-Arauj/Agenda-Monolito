@@ -32,6 +32,16 @@ export class ContactDTO {
     }
 }
 
+export class ContactViewResponseDTO {
+    public userId: string;
+
+    constructor(
+        userId: string
+    ) {
+        this.userId = userId;
+    }
+}
+
 export class ContactResponseDTO {
     public id: string;
     public name: string;

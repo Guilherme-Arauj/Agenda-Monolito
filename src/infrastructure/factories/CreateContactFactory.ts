@@ -1,4 +1,5 @@
 import { CreateContact } from "../../Application/use-cases/CreateContact";
+import { GetContacts } from "../../Application/use-cases/GetContacts";
 import { ContactRepository } from "../../Application/use-cases/repositories/ContactRepository";
 import { IContactRepository } from "../../Application/use-cases/repositories/IContactRepository";
 import { IPrismaConfig } from "../database/IPrismaConfig";
@@ -14,5 +15,7 @@ export function makeCreateContactController(): ContactController {
     const uuidConfig: IUuidConfig = new UuidConfig();
 
     const createContactUseCase = new CreateContact(contactRepository, uuidConfig);
-    return new ContactController(createContactUseCase);
+    const getContactsUseCase = new GetContacts(contactRepository);
+
+    return new ContactController(createContactUseCase, getContactsUseCase);
 }
