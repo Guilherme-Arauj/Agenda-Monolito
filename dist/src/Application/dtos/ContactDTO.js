@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ContactResponseDTO = exports.ContactDTO = void 0;
+exports.ContactResponseDTO = exports.ContactViewResponseDTO = exports.ContactDTO = void 0;
 class ContactDTO {
     constructor(name, age, cpf, phone, email, address, socialMedia, note, userId) {
         this.name = name;
@@ -15,6 +15,12 @@ class ContactDTO {
     }
 }
 exports.ContactDTO = ContactDTO;
+class ContactViewResponseDTO {
+    constructor(userId) {
+        this.userId = userId;
+    }
+}
+exports.ContactViewResponseDTO = ContactViewResponseDTO;
 class ContactResponseDTO {
     constructor(id, name, email, phone, userId) {
         this.id = id;

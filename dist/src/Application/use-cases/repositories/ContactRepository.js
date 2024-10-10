@@ -25,7 +25,11 @@ class ContactRepository {
         });
     }
     contactTable(idUserCreator) {
-        throw new Error("Method not implemented.");
+        return this.prisma.contact.findMany({
+            where: {
+                userId: idUserCreator
+            },
+        });
     }
     update(emailContact, topic, alteration) {
         throw new Error("Method not implemented.");
