@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UserResponseDTO = exports.UserDTO = void 0;
+exports.UserLoginDTO = exports.UserResponseDTO = exports.UserDTO = void 0;
 class UserDTO {
     constructor(name, email, password) {
         this.name = name;
@@ -17,3 +17,10 @@ class UserResponseDTO {
     }
 }
 exports.UserResponseDTO = UserResponseDTO;
+class UserLoginDTO {
+    constructor(email, password) {
+        this.email = email;
+        this.password = password;
+    }
+}
+exports.UserLoginDTO = UserLoginDTO;

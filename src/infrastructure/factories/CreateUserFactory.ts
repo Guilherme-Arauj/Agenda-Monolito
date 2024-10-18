@@ -8,6 +8,7 @@ import { IUuidConfig } from "../utils/uuid/IUuidConfig";
 import { UuidConfig } from "../utils/uuid/UuidConfig";
 import { IPrismaConfig } from "../database/IPrismaConfig";
 import { PrismaConfig } from "../database/PrismaConfig";
+import { Login } from "../../Application/use-cases/Login";
 
 export function makeCreateUserController(): UserController {
     const prismaConfig: IPrismaConfig = new PrismaConfig();
@@ -16,7 +17,8 @@ export function makeCreateUserController(): UserController {
     const bcryptConfig: IBcryptConfig = new BcryptConfig();
     const uuidConfig: IUuidConfig = new UuidConfig();
 
-
+    
     const createUserUseCase = new CreateUser(userRepository, bcryptConfig, uuidConfig); // Use Case recebe a interface
-    return new UserController(createUserUseCase); // Controller recebe o Use Case
+    const loginUseCase = new Login(userRepository, bcryptConfig)
+    return new UserController(createUserUseCase, loginUseCase); // Controller recebe os Use Cases
 }

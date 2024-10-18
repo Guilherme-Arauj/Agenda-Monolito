@@ -10,6 +10,6 @@
     "moduleResolution": "NodeNext",
     "allowSyntheticDefaultImports": true
   },
-  "include": ["src/**/*", "src/infrastructure/web/server.ts"],
+  "include": ["src/**/*", "src/infrastructure/web/server.ts", "src/infrastructure/middleware/types/index.d.ts"],
   "exclude": ["node_modules"]
 }
