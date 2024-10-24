@@ -16,8 +16,8 @@ class ContactDTO {
 }
 exports.ContactDTO = ContactDTO;
 class ContactViewResponseDTO {
-    constructor(userId) {
-        this.userId = userId;
+    constructor(id) {
+        this.id = id;
     }
 }
 exports.ContactViewResponseDTO = ContactViewResponseDTO;

@@ -6,7 +6,7 @@ class GetContacts {
         this.contactRepository = contactRepository;
     }
     async execute(dto) {
-        const savedUser = await this.contactRepository.contactTable(dto.userId);
+        const savedUser = await this.contactRepository.contactTable(dto.id);
         return savedUser;
     }
 }

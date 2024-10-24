@@ -5,7 +5,7 @@ import { IPrismaConfig } from "../../../infrastructure/database/IPrismaConfig";
 
 export class UserRepository implements IUserRepository {
     constructor(private prismaConfig: IPrismaConfig){}
-
+   
     private get prisma(){
         return this.prismaConfig.prisma
     }
@@ -28,4 +28,13 @@ export class UserRepository implements IUserRepository {
             }
         });
     }
+
+    public async getUser(id: string): Promise<User | null> {
+        return this.prisma.user.findUnique({
+            where: {
+                id: id
+            }
+        })
+    }
+
 }

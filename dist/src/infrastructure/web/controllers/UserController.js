@@ -42,6 +42,13 @@ class UserController {
                 return;
             const dto = new UserDTO_1.UserLoginDTO(validatedData.email, validatedData.password);
             const userResponse = await this.loginUseCase.execute(dto);
+            if (!userResponse) {
+                return res.status(401).json({ message: "Credenciais inválidas" });
+            }
+            res.status(201).json({
+                message: "Login realizado com sucesso!",
+                user: userResponse
+            });
         }
         catch (error) {
             console.error('Erro ao processar requisição:', error);

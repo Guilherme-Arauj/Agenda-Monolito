@@ -18,7 +18,7 @@ export class UserController {
         this.loginUseCase = loginUseCase;
     }
 
-    public async create(req: Request, res: Response): Promise<void> {
+    public async create(req: Request, res: Response): Promise<any> {
         try {
             const { name, email, password } = req.body;
 
@@ -46,7 +46,7 @@ export class UserController {
         }
     }
 
-    public async login(req: Request, res: Response): Promise<void> {
+    public async login(req: Request, res: Response): Promise<any> {
         try {
             const {email, password} = req.body;
 
@@ -59,8 +59,15 @@ export class UserController {
 
             const userResponse = await this.loginUseCase.execute(dto);
 
+            if (!userResponse) {
+                return res.status(401).json({ message: "Credenciais inválidas" });
+            }
+    
 
-
+            res.status(201).json({
+                message: "Login realizado com sucesso!",
+                user: userResponse
+            });
 
         } catch (error) {
             console.error('Erro ao processar requisição:', error);

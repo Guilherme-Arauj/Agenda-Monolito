@@ -9,6 +9,12 @@ class CreateContact {
         this.uuidConfig = uuidConfig;
     }
     async execute(dto) {
+        const cpf = dto.cpf;
+        let cpfValidation;
+        if (cpf) {
+            cpfValidation = this.cpfValidation(cpf);
+            return cpfValidation;
+        }
         const id = await this.uuidConfig.generateContactId();
         const contact = new Contact_1.Contact({
             id: id,
@@ -24,6 +30,12 @@ class CreateContact {
         });
         const savedContact = await this.contactRepository.create(contact);
         return new ContactDTO_1.ContactResponseDTO(savedContact.id, savedContact.name, savedContact.email, savedContact.phone, savedContact.userId);
+    }
+    async cpfValidation(cpf) {
+        const contactValidation = await this.contactRepository.validate(cpf);
+        if (contactValidation) {
+            throw new Error("[Cpf já presente no Banco de dados]");
+        }
     }
 }
 exports.CreateContact = CreateContact;

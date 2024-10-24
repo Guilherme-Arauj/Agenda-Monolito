@@ -25,5 +25,12 @@ class UserRepository {
             }
         });
     }
+    async getUser(id) {
+        return this.prisma.user.findUnique({
+            where: {
+                id: id
+            }
+        });
+    }
 }
 exports.UserRepository = UserRepository;

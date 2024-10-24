@@ -1,6 +1,6 @@
-// src/infrastructure/web/app.ts
 import express, { Application } from 'express';
-import { router as userRouter } from './Routes/UserRoutes'; // Importa as rotas de usuário
+import { userRouter } from './Routes/UserRoutes';
+import { contactRouter } from './Routes/ContactRoutes'
 import cors from 'cors';
 import dotenv from 'dotenv';
 dotenv.config();
@@ -14,6 +14,7 @@ app.use(cors());
 app.use(express.json());
 
 // Configura as rotas
-app.use('/api', userRouter); // Prefixo /api para as rotas de usuário
+app.use('/api', userRouter);
+app.use('/api', contactRouter);
 
 export default app;

@@ -4,7 +4,7 @@ exports.validateDTOContactView = validateDTOContactView;
 const zod_1 = require("zod");
 function validateDTOContactView(reqSchema, res) {
     const contactViewSchema = zod_1.z.object({
-        userId: zod_1.z.string()
+        id: zod_1.z.string()
     });
     try {
         const contactView = contactViewSchema.parse(reqSchema);

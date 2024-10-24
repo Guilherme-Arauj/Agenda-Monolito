@@ -2,7 +2,7 @@ import { z } from "zod";
 
 export function validateDTOContactView(reqSchema: Object, res: any) {
     const contactViewSchema = z.object({
-        userId: z.string()
+        id: z.string()
     });
     try {
         const contactView = contactViewSchema.parse(reqSchema);

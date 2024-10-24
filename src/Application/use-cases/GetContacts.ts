@@ -10,7 +10,7 @@ export class GetContacts{
 
     public async execute(dto: ContactViewResponseDTO): Promise<Contact[]>{
 
-        const savedUser = await this.contactRepository.contactTable(dto.userId);
+        const savedUser = await this.contactRepository.contactTable(dto.id);
         
         
 

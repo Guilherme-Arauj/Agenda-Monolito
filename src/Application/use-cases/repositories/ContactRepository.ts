@@ -4,6 +4,7 @@ import { IPrismaConfig } from "../../../infrastructure/database/IPrismaConfig"
 
 export class ContactRepository implements IContactRepository{
     constructor(private prismaConfig: IPrismaConfig){}
+    
 
     private get prisma(){
         return this.prismaConfig.prisma
@@ -30,6 +31,14 @@ export class ContactRepository implements IContactRepository{
         return this.prisma.contact.findMany({
             where:{
                 userId: idUserCreator
+            },
+        });
+    }
+
+    validate(cpf: string): Promise<Contact | null> {
+        return this.prisma.contact.findUnique({
+            where:{
+                cpf:cpf
             },
         });
     }

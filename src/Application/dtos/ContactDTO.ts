@@ -33,12 +33,12 @@ export class ContactDTO {
 }
 
 export class ContactViewResponseDTO {
-    public userId: string;
+    public id: string;
 
     constructor(
-        userId: string
+        id: string
     ) {
-        this.userId = userId;
+        this.id = id;
     }
 }
 

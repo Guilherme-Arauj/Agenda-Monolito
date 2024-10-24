@@ -31,6 +31,13 @@ class ContactRepository {
             },
         });
     }
+    validate(cpf) {
+        return this.prisma.contact.findUnique({
+            where: {
+                cpf: cpf
+            },
+        });
+    }
     update(emailContact, topic, alteration) {
         throw new Error("Method not implemented.");
     }

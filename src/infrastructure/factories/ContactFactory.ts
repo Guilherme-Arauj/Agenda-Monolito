@@ -1,3 +1,4 @@
+import { TokenMiddleware } from "../../Application/middleware/TokenMiddleware";
 import { CreateContact } from "../../Application/use-cases/CreateContact";
 import { GetContacts } from "../../Application/use-cases/GetContacts";
 import { ContactRepository } from "../../Application/use-cases/repositories/ContactRepository";
@@ -8,8 +9,9 @@ import { IUuidConfig } from "../utils/uuid/IUuidConfig";
 import { UuidConfig } from "../utils/uuid/UuidConfig";
 import { ContactController } from "../web/controllers/ContactController";
 
-export function makeCreateContactController(): ContactController {
+export function ContactFactory(): ContactController {
     const prismaConfig: IPrismaConfig = new PrismaConfig();
+    const secretKey = process.env.SECRET_KEY as string;
 
     const contactRepository: IContactRepository = new ContactRepository(prismaConfig);
     const uuidConfig: IUuidConfig = new UuidConfig();

@@ -17,7 +17,8 @@ export class ContactController {
     public async create(req: Request, res: Response): Promise<void> {
         try {
 
-            const { name, age, cpf, phone, email, address, socialMedia, note, userId } = req.body;
+            const { name, age, cpf, phone, email, address, socialMedia, note } = req.body;
+            const userId = req.user?.id
 
             const reqSchema = {
                 name,
@@ -62,22 +63,22 @@ export class ContactController {
     public async getContacts(req: Request, res: Response): Promise<void> {
         try {
 
-            const { userId } = req.body;
+            const  id  = req.user?.id;
 
-            if (!userId) {
+            if (!id) {
                 res.status(400).send({ message: "userId is required" });
                 return;
             }
 
             const reqSchema = {
-                userId
+                id: id
             }
 
-            const validatedData = await validateDTOContactView(reqSchema, res);
+            const validatedData = validateDTOContactView(reqSchema, res);
             if (!validatedData) return;
 
             const dto = new ContactViewResponseDTO(
-                validatedData.userId
+                validatedData.id
             );
 
             const userResponse = await this.getContactsUseCase.execute(dto);

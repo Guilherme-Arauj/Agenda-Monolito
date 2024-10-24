@@ -1,15 +1,15 @@
 import { Router } from 'express';
-import { makeCreateUserController } from '../../factories/CreateUserFactory';
-import { makeCreateContactController } from '../../factories/CreateContactFactory';
+import { UserFactory } from '../../factories/UserFactory';
+import { TokenMiddleware } from '../../../Application/middleware/TokenMiddleware';
 
-const router = Router();
-const userControllerCreateUser = makeCreateUserController(); // Usando a Factory para criar o controller
-const contactControllerCreateContact = makeCreateContactController(); 
+const userRouter = Router();
+const userController = UserFactory(); // Usando a Factory para criar o controller
 
-router.post('/cadastroContato', (req, res) => contactControllerCreateContact.create(req, res));
-router.post('/listarContatos', (req, res) => contactControllerCreateContact.getContacts(req, res));
+
 
 // Rota para criar um usuário
-router.post('/cadastro', (req, res) => userControllerCreateUser.create(req, res));
+userRouter.post('/cadastro', (req, res) => userController.create(req, res));
 
-export { router };
+//Rota para login
+userRouter.post('/login', (req, res) => userController.login(req, res));
+export { userRouter };
