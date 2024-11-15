@@ -11,7 +11,7 @@ export class UserRepository implements IUserRepository {
     }
 
     public async create(user: User): Promise<User> {
-        return this.prisma.user.create({
+        return await this.prisma.user.create({
             data: {
                 id: user.id,
                 name: user.name,  
@@ -22,7 +22,7 @@ export class UserRepository implements IUserRepository {
     }
 
     public async validate(email: string): Promise<User | null> {
-        return this.prisma.user.findUnique({
+        return await this.prisma.user.findUnique({
             where: {
                 email: email
             }
@@ -30,7 +30,7 @@ export class UserRepository implements IUserRepository {
     }
 
     public async getUser(id: string): Promise<User | null> {
-        return this.prisma.user.findUnique({
+        return await this.prisma.user.findUnique({
             where: {
                 id: id
             }

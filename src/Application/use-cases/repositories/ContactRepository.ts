@@ -1,18 +1,17 @@
-import {Contact} from "../../../domain/entities/Contact"
-import { IContactRepository } from "./IContactRepository"
-import { IPrismaConfig } from "../../../infrastructure/database/IPrismaConfig"
+import { Contact } from "../../../domain/entities/Contact";
+import { IContactRepository } from "./IContactRepository";
+import { IPrismaConfig } from "../../../infrastructure/database/IPrismaConfig";
 
-export class ContactRepository implements IContactRepository{
-    constructor(private prismaConfig: IPrismaConfig){}
-    
+export class ContactRepository implements IContactRepository {
+    constructor(private prismaConfig: IPrismaConfig) {}
 
-    private get prisma(){
-        return this.prismaConfig.prisma
+    private get prisma() {
+        return this.prismaConfig.prisma;
     }
 
-    create(contact: Contact): Promise<Contact> {
-         return this.prisma.contact.create({
-            data:{
+    public async create(contact: Contact): Promise<Contact> {
+        return await this.prisma.contact.create({
+            data: {
                 id: contact.id,
                 name: contact.name,
                 age: contact.age,
@@ -22,32 +21,32 @@ export class ContactRepository implements IContactRepository{
                 address: contact.address,
                 socialMedia: contact.socialMedia,
                 note: contact.note,
-                userId: contact.userId
-            }
-        });
-    }
-    
-    contactTable(idUserCreator: string): Promise<Contact[]> {
-        return this.prisma.contact.findMany({
-            where:{
-                userId: idUserCreator
+                userId: contact.userId,
             },
         });
     }
 
-    validate(cpf: string): Promise<Contact | null> {
-        return this.prisma.contact.findUnique({
-            where:{
-                cpf:cpf
+    public async contactTable(idUserCreator: string): Promise<Contact[]> {
+        return await this.prisma.contact.findMany({
+            where: {
+                userId: idUserCreator,
             },
         });
     }
-    
-    update(emailContact: string, topic: string, alteration: any): Promise<string> {
-        throw new Error("Method not implemented.")
-    }
-    delete(emailContact: string): Promise<string> {
-        throw new Error("Method not implemented.")
+
+    public async validate(cpf: string): Promise<Contact | null> {
+         return await this.prisma.contact.findUnique({
+            where: {
+                cpf: cpf,
+            },
+        });
     }
 
+    public async update(emailContact: string, topic: string, alteration: any): Promise<string> {
+        throw new Error("Method not implemented.");
+    }
+
+    public async delete(emailContact: string): Promise<string> {
+        throw new Error("Method not implemented.");
+    }
 }

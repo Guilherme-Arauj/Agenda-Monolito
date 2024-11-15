@@ -4,6 +4,7 @@ import { validateDTOContact } from "../../utils/zod/validateDTOContact";
 import { validateDTOContactView } from "../../utils/zod/validateDTOContactView";
 import { ContactDTO, ContactViewResponseDTO } from "../../../Application/dtos/ContactDTO";
 import { GetContacts } from "../../../Application/use-cases/GetContacts";
+import { log } from "console";
 
 export class ContactController {
     private createContactUseCase: CreateContact;
@@ -32,7 +33,7 @@ export class ContactController {
                 userId
             };
 
-            const validatedData = await validateDTOContact(reqSchema, res);
+            const validatedData =  validateDTOContact(reqSchema, res);
             if (!validatedData) return;
 
             const dto = new ContactDTO(
@@ -48,7 +49,7 @@ export class ContactController {
             );
 
             const userResponse = await this.createContactUseCase.execute(dto);
-
+            
             res.status(201).json({
                 message: "Cadastro de contato realizado com sucesso!",
                 user: userResponse
@@ -56,7 +57,7 @@ export class ContactController {
 
         } catch (error) {
             console.error('Erro ao processar requisição:', error);
-            res.status(400).json({ message: "Erro ao criar contato" });
+            res.status(400).json({ message: `Erro ao criar contato - ${error}`});
         }
     }
 
@@ -90,7 +91,7 @@ export class ContactController {
 
         } catch (error) {
             console.error('Erro ao processar requisição:', error);
-            res.status(400).json({ message: "Erro ao criar contato" });
+            res.status(400).json({ message: `Erro ao gerar contatos - ${error}` });
         }
     }
 }

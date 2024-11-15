@@ -42,7 +42,7 @@ export class UserController {
             });
         } catch (error) {
             console.error('Erro ao processar requisição:', error);
-            res.status(400).json({ message: "Erro ao criar usuário" });
+            res.status(400).json({ message: `Erro ao criar usuário - ${error}` });
         }
     }
 
@@ -71,7 +71,7 @@ export class UserController {
 
         } catch (error) {
             console.error('Erro ao processar requisição:', error);
-            res.status(400).json({ message: "Erro realizar Login" });
+            res.status(400).json({ message: `Erro realizar Login - ${error}` });
         }
     }
 }
