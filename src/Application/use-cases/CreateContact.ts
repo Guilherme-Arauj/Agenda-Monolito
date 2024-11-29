@@ -3,19 +3,22 @@ import {Contact} from "../../domain/entities/Contact"
 import { IUuidConfig } from "../../infrastructure/utils/uuid/IUuidConfig";
 import { ContactDTO, ContactResponseDTO } from "../dtos/ContactDTO";
 import { IContactRepository } from "./repositories/IContactRepository";
+import { ICpfValidator } from "../../infrastructure/utils/cpfValidation/ICpfValidator";
 
 export class CreateContact{
     constructor(
         private contactRepository: IContactRepository,
-        private uuidConfig: IUuidConfig
+        private uuidConfig: IUuidConfig,
+        private cpfValidator: ICpfValidator
     ){}
 
     public async execute(dto: ContactDTO): Promise<ContactResponseDTO>{
         const cpf = dto.cpf;
-
+        const userId = dto.userId;
+        
         
         if(cpf){
-            return await this.cpfValidation(cpf);
+            await this.cpfValidator.validate(cpf, userId);
         }
 
         const id = await this.uuidConfig.generateContactId();
@@ -30,11 +33,9 @@ export class CreateContact{
             address: dto.address,
             socialMedia: dto.socialMedia,
             note: dto.note,
-            userId: dto.userId
+            category: dto.category,
+            userId: userId
         });
-
-        
-        
 
         const savedContact = await this.contactRepository.create(contact);
 
@@ -47,11 +48,4 @@ export class CreateContact{
             )  
     }
     
-    private async cpfValidation(cpf: string): Promise <any>{
-        const contactValidation = await this.contactRepository.validate(cpf)
-        
-        if(contactValidation){
-           throw new Error("[Cpf já presente no Banco de dados]") 
-        }
-    }
 }

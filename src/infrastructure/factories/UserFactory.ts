@@ -16,7 +16,6 @@ import { JwtConfig } from "../utils/jwt/JwtConfig";
 export function UserFactory(): UserController {
     const prismaConfig: IPrismaConfig = new PrismaConfig();
     const secretKey = process.env.SECRET_KEY as string;
-
     const userRepository: IUserRepository = new UserRepository(prismaConfig);
     const bcryptConfig: IBcryptConfig = new BcryptConfig();
     const uuidConfig: IUuidConfig = new UuidConfig();

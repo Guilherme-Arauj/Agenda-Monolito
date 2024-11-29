@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro de Contatos</title>
+  <link rel="stylesheet" href="style.css">
+  <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap"
+    rel="stylesheet">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" rel="stylesheet">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+
+
+  <div class="header-top">
+    <span id="saudacao" class="header-left libre-baskerville-regular">Olá, Usuário</span> <!-- Mensagem alinhada -->
+    <span class="header-title libre-baskerville-regular">Contatos</span> <!-- Título centralizado -->
+  </div>
+
+
+  <div class="container">
+    <div class="divTable">
+      <table>
+        <thead>
+          <tr>
+            <th class="">Nome</th>
+            <th>Telefone</th>
+            <th>E-mail</th>
+            <th class="acao">Editar</th>
+            <th class="acao">Excluir</th>
+            <th class="acao">Mais</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- As linhas da tabela serão preenchidas dinamicamente via JavaScript -->
+        </tbody>
+      </table>
+    </div>
+
+    <div class="modal-container">
+      <div class="modal">
+        <form>
+          <label for="m-nome">Nome</label>
+          <input id="m-nome" type="text" required />
+
+          <label for="m-idade">Idade</label>
+          <input id="m-idade" type="number" />
+
+          <label for="m-cpf">CPF</label>
+          <input id="m-cpf" type="text" />
+
+          <label for="m-telefone">Telefone</label>
+          <input id="m-telefone" type="text" required />
+
+          <label for="m-email">E-mail</label>
+          <input id="m-email" type="email" required />
+
+          <label for="m-endereco">Endereço</label>
+          <input id="m-endereco" type="text" />
+
+          <label for="m-rede-social">Redes Sociais</label>
+          <input id="m-rede-social" type="text" />
+
+          <label for="m-observacao">Observação</label>
+          <textarea id="m-observacao"></textarea>
+
+          <label for="m-categoria">Categoria</label>
+          <select id="m-categoria">
+            <option value="Amigos">Amigos</option>
+            <option value="Família">Família</option>
+            <option value="Clientes">Clientes</option>
+            <option value="Favoritos">Favoritos</option>
+          </select>
+
+          <button id="btnSalvar">Salvar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <button id="new">
+      <i class='bx bx-plus'></i> Adicionar
+    </button>
+    <button id="deleteAll">
+      <i class='bx bx-trash'></i> Excluir Todos Contatos
+    </button>
+    <button id="logout" class="logout">
+      <i class='bx bx-log-out'></i> Log-out
+    </button>
+  </footer>
+
+  <!-- Footer padrão -->
+  <div class="standard-footer">
+    &copy; 2024 - Todos os direitos reservados. Desenvolvido com 💻 por Guilherme Araujo e Iaman Lagares.
+  </div>
+
+
+
+  <script src="script.js"></script>
+</body>
+
+</html>

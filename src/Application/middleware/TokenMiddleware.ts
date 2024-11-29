@@ -12,13 +12,12 @@ export class TokenMiddleware {
   ) {}
 
   public verifyToken = async(req: Request, res: Response, next: NextFunction) =>{
-    let token = req.headers.authorization;
-
+    let token = req.session.user?.token;
+    
+    
     if (!token) {
       return res.status(401).json({ message: 'Token não fornecido' });
     }
-
-    token = token.split(' ')[1];
 
     const decoded = this.jwtConfig.verify(token);
     if (!decoded || typeof decoded === 'string') {
@@ -34,6 +33,8 @@ export class TokenMiddleware {
     const novoToken = this.jwtConfig.sign({ id: usuario.id, email: usuario.email }, '1h');
 
     res.setHeader('Authorization', `Bearer ${novoToken}`);
+    console.log(req.session.user);
+    
     
     req.user = usuario;
     next();

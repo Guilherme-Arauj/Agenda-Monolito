@@ -1,0 +1,465 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+.merriweather-black {
+  font-family: "Merriweather", serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
+.libre-baskerville-regular {
+  font-family: "Libre Baskerville", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+.alfa-slab-one-regular {
+  font-family: "Alfa Slab One", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+.michroma-regular {
+  font-family: "Michroma", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.russo-one-regular {
+  font-family: "Russo One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+.roboto-condensed{
+  font-family: "Roboto Condensed", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 900;
+  font-style: normal;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* Alinhar ao topo */
+  background: linear-gradient(to right, #2c3e50, #3498db); /* Gradiente cinza azul neon */
+}
+
+
+
+/* Estiliza a nova seção para o título no topo */
+.header-left {
+  font-weight: 500;
+  font-size: 35px;
+  color: white; /* Texto em branco */
+  text-align: left; /* Alinha o texto à esquerda */
+  width: 20%; /* Define uma largura fixa */
+  padding-left: 100px; /* Espaçamento à esquerda para alinhamento */
+}
+
+.header-title {
+  font-weight: 400;
+  font-size: 80px;
+  color: white;
+  text-align: center;
+  flex-grow: 1; /* Centraliza o texto no espaço restante */
+  padding-right: 430px;
+}
+
+.header-top {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  margin-bottom: 20px;
+}
+
+
+
+button {
+  cursor: pointer;
+}
+
+.container {
+  width: 90%;
+  height: 80%;
+  border-radius: 10px;
+  background: white;
+  border: 2px solid rgb(0, 0, 0); 
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1); /* Sombra leve para destaque */
+}
+
+.header {
+  min-height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: auto 12px;
+}
+
+.header span {
+  font-weight: 900;
+  font-size: 20px;
+  word-break: break-all;
+}
+
+/* Adiciona estilo para o footer */
+footer {
+  display: flex;
+  justify-content: flex-start; /* Alinha à esquerda */
+  gap: 10px; /* Espaço entre os botões */
+  margin-top: 20px; /* Espaço do footer para a tabela */
+}
+
+
+#new {
+  font-size: 1rem; /* Usar unidades relativas */
+  padding: 0.5rem 1rem; /* Ajuste o padding */
+  border-radius: 8px;
+  border: none;
+  color: white;
+  background-color: rgb(57, 57, 226);   
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000; /* Garante que o botão fique acima de outros elementos */
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+#new:hover {
+  background-color: rgb(45, 45, 180);
+  transform: scale(1.05);
+}
+
+#new:active {
+  background-color: rgb(30, 30, 140);
+  transform: scale(1);
+}
+
+#deleteAll {
+  font-size: 1rem; /* Usar unidades relativas */
+  padding: 0.5rem 1rem; /* Ajuste o padding */
+  border-radius: 8px;
+  border: none;
+  color: white;
+  background-color: rgb(220, 53, 69); /* Vermelho */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000; /* Garante que o botão fique acima de outros elementos */
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+#deleteAll:hover {
+  background-color: rgb(200, 50, 60); /* Vermelho mais escuro */
+  transform: scale(1.05);
+}
+
+#deleteAll:active {
+  background-color: rgb(180, 45, 55); /* Vermelho ainda mais escuro */
+  transform: scale(1);
+}
+
+#logout {
+  font-size: 1rem; /* Usar unidades relativas */
+  padding: 0.5rem 1rem; /* Ajuste o padding */
+  border-radius: 8px;
+  border: none;
+  color: white;
+  background-color: rgb(220, 53, 69); /* Vermelho */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000; /* Garante que o botão fique acima de outros elementos */
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+#logout:hover {
+  background-color: rgb(200, 50, 60); /* Vermelho mais escuro */
+  transform: scale(1.05);
+}
+
+#logout:active {
+  background-color: rgb(180, 45, 55); /* Vermelho ainda mais escuro */
+  transform: scale(1);
+}
+
+
+/* Footer padrão */
+.standard-footer {
+  width: 100%;
+  padding: 10px 20px;
+  margin-top: 30px;
+  text-align: center;
+  font-size: 14px;
+  color: white;
+  background-color: #2c3e50; /* Azul-escuro do tema */
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.divTable {
+  padding: 10px;
+  width: auto;
+  height: inherit;
+  overflow: auto;
+}
+
+.divTable::-webkit-scrollbar {
+  width: 12px;
+  background-color: whitesmoke;
+}
+
+.divTable::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #72ffff; /* Azul bem clarinho */
+}
+
+table {
+  width: 100%;
+  border-spacing: 10px;
+  word-break: break-all;
+  border-collapse: collapse;
+}
+
+thead {
+  background: radial-gradient(circle, rgba(52, 152, 219, 0.8) 30%, rgba(52, 152, 219, 0.3) 70%, transparent 100%); /* Degradê radial mais sutil com a cor #3498db */
+  color: rgb(0, 0, 0);
+  border: none;
+}
+
+tr {
+  border-bottom: 1px solid rgb(238, 235, 235) !important;
+}
+
+thead tr th {
+  padding: 5px;
+  text-align: start;
+}
+
+tbody {
+  background-color: #ffffff; /* Cor de fundo clara para o corpo da tabela */
+}
+
+tbody tr td {
+  vertical-align: text-top;
+  padding: 6px;
+}
+
+thead tr th.acao {
+  width: 100px !important;
+  text-align: center;
+}
+
+tbody tr td.acao {
+  text-align: center;
+}
+
+.acao-buttons {
+  display: flex;
+  gap: 0px; /* Espaço entre os ícones */
+  justify-content: center; /* Centraliza os ícones horizontalmente */
+}
+
+.acao-buttons button {
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+}
+
+.acao-buttons i {
+  font-size: 25px; /* Tamanho dos ícones */
+}
+
+@media (max-width: 1200px) {
+  #new {
+    font-size: 0.9rem; /* Reduz o tamanho da fonte */
+    padding: 0.4rem 0.8rem; /* Reduz o padding */
+  }
+}
+
+@media (max-width: 900px) {
+  #new {
+    font-size: 0.8rem; /* Reduz ainda mais o tamanho da fonte */
+    padding: 0.3rem 0.7rem; /* Reduz ainda mais o padding */
+  }
+}
+
+@media (max-width: 700px) {
+  body {
+    font-size: 10px;
+  }
+
+  .header span {
+    font-size: 15px;
+  }
+
+  #new {
+    font-size: 0.7rem; /* Tamanho de fonte bem reduzido */
+    padding: 0.2rem 0.5rem; /* Padding mínimo */
+  }
+
+  thead tr th.acao {
+    width: auto !important;
+  }
+
+  td button i {
+    font-size: 20px !important;
+  }
+
+  td button i:first-child {
+    margin-right: 0;
+  }
+
+  .modal {
+    width: 80% !important; /* Ajuste a largura do modal para 80% */
+    padding: 20px; /* Reduza o padding interno do modal */
+  }
+
+  .modal label {
+    font-size: 12px !important;
+  }
+}
+
+.modal-container {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  z-index: 999;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px; /* Reduza o padding para diminuir o tamanho do formulário */
+  background-color: white;
+  border-radius: 8px; /* Ajuste o raio da borda para ficar proporcional */
+  width: 40%; /* Reduza a largura do modal */
+}
+
+.modal label {
+  font-size: 15px; /* Ajuste o tamanho da fonte dos rótulos */
+  width: 100%;
+}
+
+.modal input,
+.modal textarea {
+  width: calc(100% - 20px); /* Ajuste a largura dos campos para ficar dentro do modal */
+  outline: none;
+  padding: 4px 8px; /* Ajuste o padding dos campos */
+  margin-bottom: 15px; /* Ajuste o espaço inferior dos campos */
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px solid #ccc;
+  font-family: 'Poppins', sans-serif;
+}
+
+.modal textarea {
+  resize: none;
+}
+
+.modal button {
+  width: 100%;
+  margin: 10px auto;
+  padding: 8px; /* Ajuste o padding do botão */
+  border: none;
+  background-color: rgb(57, 57, 226);
+  color: white;
+  border-radius: 4px; /* Ajuste o raio da borda do botão */
+}
+
+.active {
+  display: flex;
+}
+
+.active .modal {
+  animation: modal .4s;
+}
+
+@keyframes modal {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -60px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+td button {
+  border: none;
+  outline: none;
+  background: transparent;
+}
+
+td button i {
+  font-size: 25px;
+}
+
+td button i:first-child {
+  margin-right: 10px;
+}
+
+/* Contêiner do Dropdown */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-toggle {
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  border-radius: 4px;
+  padding: 10px;
+  top: 100%; /* Posiciona o menu logo abaixo do botão */
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.dropdown.active .dropdown-content {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* Linha de detalhes */
+.details-row {
+  background-color: #ffffff;
+}
+
+.details-content {
+  padding: 10px;
+}
+
+.details-content p {
+  margin: 5px 0;
+}

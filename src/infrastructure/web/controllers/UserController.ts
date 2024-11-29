@@ -48,6 +48,7 @@ export class UserController {
 
     public async login(req: Request, res: Response): Promise<any> {
         try {
+            
             const {email, password} = req.body;
 
             const reqSchema = { email, password};
@@ -62,7 +63,12 @@ export class UserController {
             if (!userResponse) {
                 return res.status(401).json({ message: "Credenciais inválidas" });
             }
-    
+            
+            req.session.user = {
+                id: userResponse.id,
+                name: userResponse.name,
+                token: userResponse.token
+            };
 
             res.status(201).json({
                 message: "Login realizado com sucesso!",

@@ -10,6 +10,7 @@ export function validateDTOContact(reqSchema: Object, res: any) {
         address: z.string(),
         socialMedia: z.string(),
         note: z.string(),
+        category: z.string(),
         userId: z.string()
     });
     try {

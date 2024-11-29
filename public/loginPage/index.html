@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://kit.fontawesome.com/cf6fa412bd.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+  
+  <div class="logo">
+    <img src="img/agenda-logo.png" alt="Logo" />
+  </div>
+
+  <div class="container">
+
+    <div class="buttonsForm">
+      <div class="btnColor"></div>
+      <button id="btnSignin">Entrar</button>
+      <button id="btnSignup">Cadastrar</button>
+    </div>
+
+    <!-- Formulário de Login -->
+    <form id="signin">
+      <input type="text" placeholder="E-mail" required />
+      <i class="fas fa-envelope iEmail"></i>
+      <input type="password" placeholder="Senha" required />
+      <i class="fas fa-lock iPassword"></i>
+      <div class="divCheck">
+        <input type="checkbox" />
+        <span>Lembrar Senha</span>
+      </div>
+      <button type="submit">Entrar</button>
+    </form>
+
+    <!-- Formulário de Cadastro -->
+    <form id="signup">
+      <!-- Campo Nome -->
+      <!-- Campo Nome -->
+      <input type="text" placeholder="Nome" required />
+      <i class="fas fa-user iName"></i>
+
+
+      <!-- Campo E-mail -->
+      <input type="text" placeholder="E-mail" required />
+      <i class="fas fa-envelope iEmail"></i>
+
+      <!-- Campo Senha -->
+      <input type="password" placeholder="Senha" required />
+      <i class="fas fa-lock iPassword"></i>
+
+      <!-- Confirmação de Senha -->
+      <input type="password" placeholder="Confirme a Senha" required />
+      <i class="fas fa-lock iPassword2"></i>
+
+      <div class="divCheck">
+      </div>
+      <button type="submit">Cadastrar</button>
+    </form>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

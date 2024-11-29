@@ -2,6 +2,7 @@ import { IBcryptConfig } from "../../infrastructure/utils/bcrypt/IBcryptConfig";
 import { UserLoginDTO } from "../dtos/UserDTO";
 import { IUserRepository } from "./repositories/IUserRepository";
 import { IJwtConfig } from "../../infrastructure/utils/jwt/IJwtConfig";
+import { log } from "console";
 
 export class Login {
     constructor(
@@ -11,6 +12,7 @@ export class Login {
     ){}
 
     public async execute(dto: UserLoginDTO): Promise <any>{
+        
         const userValidation = await this.userRepository.validate(dto.email);
 
         if(!userValidation){
@@ -24,6 +26,7 @@ export class Login {
         }
 
         const token = this.jwtConfig.sign({ id: userValidation.id, email: userValidation.email }, '1h')
+
 
         return { 
             id: userValidation.id,
