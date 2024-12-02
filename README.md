@@ -17,7 +17,7 @@ SESSION_SECRET = SUA_SESSION_KEY
 ```
 4. Execute o comando `npx prisma migrate dev` para migrar a modelagem do schema.prisma para o banco de dados
 5. Execute o comando `npx prisma generate`
-6. Execute o comando `npm run dev` para iniciar o servidor.
+6. Execute o comando `npm run dev` para iniciar a aplicação.
 7. Acesse o prisma studio com o comando `npx prisma studio` para visualizar o banco de dados no browser de maneira mais detalhada
 
 
