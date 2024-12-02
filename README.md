@@ -1,5 +1,8 @@
 # Agenda-Monolito 
 
+Este é um software de agenda digital projetado para armazenar, exibir, atualizar e excluir contatos de forma prática e segura. Ele conta com um sistema de cadastro e login com autenticação, garantindo que apenas usuários autorizados tenham acesso aos dados. 
+
+
 ## Instalação e Uso
 1. Clone o repositório
 2. Instale as dependências utilizando o comando `npm i`
